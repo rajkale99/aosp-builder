@@ -34,11 +34,6 @@ ccache -z # Clear old stats, so monitor script will provide real ccache statisti
 #	time rclone copy $1 apon:junk -P # apon is my rclone config name, 
 #}
 
-
-	
-
-
-
 # Upload rom zip file if succeed to build! Send notification to tg! And send shell to tg if build fails!
 
 # Let's compile by parts! Coz of ram issue!
@@ -49,5 +44,4 @@ make test-api-stubs-docs || echo no problem
 make legion -j10 \
 	&& send_zip=$(up out/target/product/miatoll/*zip)
 
-	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 2h
 ccache -s # Let's print ccache statistics finally

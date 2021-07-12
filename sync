@@ -18,3 +18,9 @@ git clone --depth=1 https://github.com/legionos-devices/vendor_xiaomi_miatoll.gi
 git clone --depth=1 https://github.com/legionos-devices/vendor_xiaomi_sm6250-common.git vendor/xiaomi/sm6250-common
 
 git clone --depth=1 https://github.com/legionos-devices/kernel_xiaomi_sm6250.git kernel/xiaomi/sm6250
+
+cd /tmp/
+git clone https://github.com/akhilnarang/scripts scripts
+cd scripts
+bash setup/android_build_env.sh
+cd /tmp/rom

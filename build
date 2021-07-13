@@ -1,14 +1,3 @@
-# Telgram env setup
-export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
-
-tg_post_msg() {
- curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
- -d "parse_mode=html" \
- -d text="$1"
-}
-
-tg_post_msg "<b>Starting Build</b>" "$CHATID"
 
 #!/bin/bash
 cd /tmp/rom # Depends on where source got synced
@@ -23,6 +12,15 @@ ccache -M 30G # It took only 6.4GB for mido
 ccache -o compression=true # Will save times and data to download and upload ccache, also negligible performance issue
 ccache -z # Clear old stats, so monitor script will provide real ccache statistics
 
+tg(){
+	bot_api=1893067126:AAFLk0Nr39Ba49k3Ls_Sj4UVv0HmOvGlEKg # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
+	your_telegram_id=$1 # No need to touch 
+	msg=$2 # No need to touch
+	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
+}
+
+id=1893067126 # Your telegram id
+
 # Next 8 lines should be run first to collect ccache and then upload, after doning it 1 or 2 times, our ccache will help to build without these 8 lines.
 make api-stubs-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
@@ -31,6 +29,7 @@ make legion -j8 & # dont remove that '&'
 sleep 80m
 kill %1
 ccache -s
+tg $id "Build Succeed!
 #and dont use below codes for first 1 or 2 times, to get ccache uploaded,
 
 
@@ -54,7 +53,7 @@ ccache -s
 #make test-api-stubs-docs || echo no problem
 
 #make legion -j10 \
-#	&& send_zip=$(up out/target/product/miatoll/*zip)
-
+#	&& send_zip=$(up out/target/product/miatoll/*zip) && tg $id "Build Succeed!
+#$send_zip" \
+#	|| tmate -S /tmp/tmate.sock new-session -d && tmate -S /tmp/tmate.sock wait tmate-ready && send_shell=$(tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}') && tg $id "Build Failed" && tg $id "$send_shell" && ccache -s && sleep 2h
 #ccache -s # Let's print ccache statistics finally
-tg_post_msg "Build Success https://cirrus-ci.com/build/$CIRRUS_BUILD_ID" "$CHATID"

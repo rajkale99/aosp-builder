@@ -1,21 +1,10 @@
 #!/bin/bash
-# Telgram env setup
-export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
-
-tg_post_msg() {
- curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
- -d "parse_mode=html" \
- -d text="$1"
-}
-
-tg_post_msg "Starting sync "$MANIFEST" "$BRANCH" https://cirrus-ci.com/build/$CIRRUS_BUILD_ID" "$CHATID"
 
 mkdir -p /tmp/rom # Where to sync source
 cd /tmp/rom
 
 # Repo init command, that -device,-mips,-darwin,-notdefault part will save you more time and storage to sync, add more according to your rom and choice. Optimization is welcomed! Let's make it quit, and with depth=1 so that no unnecessary things.
-repo init -q --no-repo-verify --depth=1 -u "$MANIFEST" -b "$BRANCH" -g default,-device,-mips,-darwin,-notdefault
+repo init -q --no-repo-verify --depth=1 -u https://github.com/Project-LegionOS/manifest.git -b 11 -g default,-device,-mips,-darwin,-notdefault
 git clone https://github.com/rajkale99/local_manifest.git --depth 1 -b main .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 cd /tmp/rom/

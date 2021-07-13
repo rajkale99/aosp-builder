@@ -6,7 +6,7 @@ env: # Environment variables to pass to all tasks
     # ENCRYPTED variables is unique for every repository, so you cant use my one, create you rclone config https://rclone.org/drive/#making-your-own-client-id
     rclone_config: "ENCRYPTED[6d6f691048461afdbe599559b051756a225cb7b94f508c5ce1153fcbc5ae33429b2783f907b5452f2d8d5985f73ca3f3]"
     API_BOT: "ENCRYPTED[6eb4000ec38ab89044b830d7f49b90df16039a59e3bb872edb4c704c4b32e95e1867dd0ac3ea879ea187045f7e180b8a]"
-    CHATID: "ENCRYPTED[6391f364f7b866966aef339b673e7ee62b1b568b8b340d2f8de3b09a28ccf461342365e58fae697116c2a2f8a3eb1832]"
+    CHATID: "ENCRYPTED[bb634e90e801977185f864fdf8c227924e1679876acbfe8d0ce90defda933d331643101d9992b0593212079fb91cd136]"
     
 task:
     name: legionos # Project name

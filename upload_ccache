@@ -1,15 +1,3 @@
-# Telgram env setup
-export BOT_MSG_URL="https://api.telegram.org/bot$API_BOT/sendMessage"
-export BOT_BUILD_URL="https://api.telegram.org/bot$API_BOT/sendDocument"
-
-tg_post_msg() {
- curl -s -X POST "$BOT_MSG_URL" -d chat_id="$2" \
- -d "parse_mode=html" \
- -d text="$1"
-}
-
-tg_post_msg "Starting ccache upload to https://mygdrive.projectlegionos.workers.dev/0:/ccache/legion-vanilla/ccache.tar.gz https://cirrus-ci.com/build/$CIRRUS_BUILD_ID" "$CHATID"
-
 #!/bin/bash
 
 cd /tmp

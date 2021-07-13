@@ -14,7 +14,7 @@ tg(){
 	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
 }
 
-id=1893067126 # Your telegram id
+id=1862047215 # Your telegram id
 tg $id "Downloading Ccache Started"
 
 cd /tmp # Where to download cccahe

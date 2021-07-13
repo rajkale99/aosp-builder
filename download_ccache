@@ -7,6 +7,15 @@ cat /etc/os*
 env
 
 url=https://mygdrive.projectlegionos.workers.dev/0:/ccache/legion-vanilla/ccache.tar.gz # Where cccahe is located, use your ones, from where you want to download ccache!
+tg(){
+	bot_api=1893067126:AAFLk0Nr39Ba49k3Ls_Sj4UVv0HmOvGlEKg # Your tg bot api, dont use my one haha, it's better to encrypt bot api too.
+	your_telegram_id=$1 # No need to touch 
+	msg=$2 # No need to touch
+	curl -s "https://api.telegram.org/bot${bot_api}/sendmessage" --data "text=$msg&chat_id=${your_telegram_id}"
+}
+
+id=1893067126 # Your telegram id
+tg $id "Downloading Ccache Started"
 
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50 # Using aria2c for speed haha, ccache will be at /tmp/ccache.tar.gz since my file name is ccache.tar.gz

@@ -15,7 +15,7 @@ ccache -z # Clear old stats, so monitor script will provide real ccache statisti
 make api-stubs-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
 make test-api-stubs-docs || echo no problem, we need ccache
-make legion -j24 & # dont remove that '&'
+make legion -j12 & # dont remove that '&'
 sleep 80m
 kill %1
 ccache -s
@@ -24,7 +24,7 @@ ccache -s
 
 # upload function for uploading rom zip file! I don't want unwanted builds in my google drive haha!
 #up(){
-	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
+#	curl --upload-file $1 https://transfer.sh/$(basename $1); echo
 	# 14 days, 10 GB limit
 
 #}

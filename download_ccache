@@ -22,3 +22,4 @@ time aria2c $url -x16 -s50 # Using aria2c for speed haha, ccache will be at /tmp
 time tar xf ccache.tar.gz  # Extract ccache so ci can use it
 rm -rf ccache.tar.gz # Remove unnecessary downloaded file, it will speed up the upload ccache process
 
+tg $id "downloaded Ccache successfuly"

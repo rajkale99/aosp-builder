@@ -16,7 +16,7 @@ tg(){
 id=1862047215 # Your telegram id
 
 tg $id "Downloading Ccache Started"
-
+sudo apt-get install wget -y
 cd /tmp # Where to download cccahe
 wget -O "ccache.tar.gz" $url # Using aria2c for speed haha, ccache will be at /tmp/ccache.tar.gz since my file name is ccache.tar.gz
 time tar xf ccache.tar.gz  # Extract ccache so ci can use it

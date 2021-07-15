@@ -23,10 +23,10 @@ id=1862047215 # Your telegram id
 tg $id "Build Started"
 
 # Next 8 lines should be run first to collect ccache and then upload, after doning it 1 or 2 times, our ccache will help to build without these 8 lines.
-#make api-stubs-docs || echo no problem, we need ccache
+make api-stubs-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
-#make test-api-stubs-docs || echo no problem, we need ccache
-#make legion -j10 & # dont remove that '&'
+make test-api-stubs-docs || echo no problem, we need ccache
+make legion -j10 & # dont remove that '&'
 sleep 85m
 kill %1
 ccache -s

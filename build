@@ -26,7 +26,7 @@ tg $id "Build Started"
 make api-stubs-docs || echo no problem, we need ccache
 make system-api-stubs-docs || echo no problem we need ccache
 make test-api-stubs-docs || echo no problem, we need ccache
-make legion -j10 & # dont remove that '&'
+make legion -j8 & # dont remove that '&'
 sleep 85m
 kill %1
 ccache -s

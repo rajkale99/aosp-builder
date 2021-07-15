@@ -1,7 +1,7 @@
 
 #!/bin/bash
 cd /tmp/rom # Depends on where source got synced
-
+sudo apt-get install aria2 -y
 # Normal build steps
 . build/envsetup.sh
 lunch legion_miatoll-userdebug
